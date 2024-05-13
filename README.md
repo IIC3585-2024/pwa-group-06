@@ -10,6 +10,7 @@ Available in:  [https://wasm.cparedesr.com/](https://wasm.cparedesr.com/)
 - Push Notifications: Receive updates directly on your device, even when the web app is not open. (If notifications are accepted will receive notifications when documents are created"
 - Offline Access: Access your notes without an internet connection, thanks to service workers and cached assets.
 - Responsive Design: A consistent experience across all devices, from desktops to mobile phones.
+- Server Syncronization between devices: any online changes in the notebooks can be visualized by any other device accessing the same notebook, this allows collaborative working notebooks.
 
 ## Stack
 - HTML
