@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-messaging.js";
-
+import { notepadsApi } from './api/client.js';
 
 function initFirebase(registration) {
   const firebaseConfig = {
@@ -30,6 +30,7 @@ function initFirebase(registration) {
           }).then((currentToken) => {
             if (currentToken) {
               console.log('FCM Token:', currentToken);
+              notepadsApi.subscribeNotifications(currentToken);
             } else {
               console.log('No Instance ID token available. Request permission to generate one.');
             }

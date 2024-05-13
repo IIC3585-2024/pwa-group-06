@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (notepadName) {
       try {
         await notepadsApi.create({ name: notepadName });
-        alert('Notepad created successfully!');
         window.location.replace('/notebook.html?name=' + notepadName);
       } catch (error) {
         console.error('Failed to create notepad:', error);

@@ -5,6 +5,20 @@ let currentNotepad = null;
 let notes = [];
 
 const notepadsApi = {
+  async subscribeNotifications(token) {
+    try {
+      const response = await fetch(`${BASE_URL}/subscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ subscriber_token: token }),
+      });
+      return response.ok;
+    } catch (error) {
+      console.log(error);
+    }
+  },
   async create(notepad) {
     try {
       const response = await fetch(`${BASE_URL}/notepads`, {

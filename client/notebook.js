@@ -111,7 +111,6 @@ function addNote() {
     notepadsApi.createNote(notebookName, buildNote(noteContent, false))
       .then(data => {
         renderNotes();
-        alert('Note added successfully!');
       })
       .catch(error => {
         console.error('Failed to add note:', error);
