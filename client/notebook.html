@@ -27,7 +27,7 @@
       <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 justify-center items-center">
         <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Home</button>
         <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Delete All</button>
-        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Sort</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6" onclick="options.showModal()">Sort</button>
         <button class="btn btn-neutral rounded-xl w-full md:w-1/6">JSON</button>
         <button class="btn btn-accent rounded-xl w-full md:w-1/6">Refresh</button>
       </div>
@@ -72,6 +72,34 @@
         <!-- Notes will be added here -->
       </div>
     </div>
+
+    <dialog id="options" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg pb-2">Select any filter</h3>
+        <div class="flex flex-row py-2 space-x-2">
+          <button class="btn btn-svg">
+            <img class="w-auto h-4" src="assets\alphabetical-order-from-a-to-z.svg" alt="">
+            <span class="hidden md:block">A to Z</span>
+          </button>
+          <button class="btn btn-svg">
+            <img class="w-auto h-4" src="assets\sort-by-reverse-alphabet-order.svg" alt="">
+            <span class="hidden md:block">Z to A</span>
+          </button>
+          <button class="btn btn-svg">
+            <img class="w-auto h-4" src="assets\checked-checkbox.svg" alt="">
+            <span class="hidden md:block">Checked</span>
+          </button>
+          <button class="btn btn-svg">
+            <img class="w-auto h-4" src="assets\checkbox-blank.svg" alt="">
+            <span class="hidden md:block">Unchecked</span>
+          </button>
+        </div>
+      </div>
+    </dialog>
+
     <script src="index.js"></script>
   </body>
 </html>
