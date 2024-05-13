@@ -4,4 +4,6 @@ node_modules/
 .DS_Store
 notebooks.db
 __pycache__/
+firebase_key.json
 *.pyc
+test.db
