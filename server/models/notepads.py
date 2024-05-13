@@ -8,6 +8,7 @@ class Notepads(Base):
 
     name = Column(String, index=True, unique=True, primary_key=True)
     description = Column(String, nullable=True)
+    sorting_order = Column(String, default='created_at')
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow)
 

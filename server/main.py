@@ -41,11 +41,6 @@ def create_or_find_notepad(notepad: schema.NotepadCreate, db: Session = Depends(
         db.refresh(db_notepad)
     return db_notepad
 
-@app.get("/notepads/", response_model=List[schema.Notepad])
-def read_notepads(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    notepads = db.query(models.Notepads).offset(skip).limit(limit).all()
-    return notepads
-
 @app.get("/notepads/{notepad_name}", response_model=schema.Notepad)
 def read_notepad(notepad_name: str, db: Session = Depends(get_db)):
     db_notepad = db.query(models.Notepads).filter(models.Notepads.name == notepad_name).first()
@@ -58,7 +53,10 @@ def update_notepad(notepad_name: str, notepad: schema.NotepadCreate, db: Session
     db_notepad = db.query(models.Notepads).filter(models.Notepads.name == notepad_name).first()
     if db_notepad is None:
         raise HTTPException(status_code=404, detail="Notepad not found")
+
     db_notepad.name = notepad.name
+    db_notepad.sorting_order = notepad.sorting_order
+    db_notepad.description = notepad.description
     db.commit()
     db.refresh(db_notepad)
     return db_notepad
