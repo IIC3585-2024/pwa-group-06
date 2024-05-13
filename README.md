@@ -7,7 +7,7 @@ Available in:  [https://wasm.cparedesr.com/](https://wasm.cparedesr.com/)
 
 ## Features
 - Note taking: Easily add and manage your notes.
-- Push Notifications: Receive updates directly on your device, even when the web app is not open.
+- Push Notifications: Receive updates directly on your device, even when the web app is not open. (If notifications are accepted will receive notifications when documents are created"
 - Offline Access: Access your notes without an internet connection, thanks to service workers and cached assets.
 - Responsive Design: A consistent experience across all devices, from desktops to mobile phones.
 
