@@ -1,3 +1,4 @@
+import initFirebase from "./firebase-init.js";
 import { notepadsApi } from './api/client.js';
 
 window.addEventListener('load', async e => {
