@@ -8,15 +8,11 @@
     <meta name="theme-color" content="#f1f5f9">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
   </head>
   <body>
     <header>
       <div class="navbar bg-neutral text-neutral-content justify-between">
-        <label class="label cursor-pointer justify-between gap-2">
-          <span class="label-text text-slate-100">Online</span> 
-          <input type="checkbox" class="toggle" checked />
-        </label>
         <button class="btn btn-ghost text-xl">Incognitto Ink</button>
       </div>
     </header>
@@ -24,12 +20,12 @@
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="container p-4 bg-white shadow-lg rounded-lg my-auto flex flex-col justify-between items-center">
         <h1 class="text-center text-4xl font-bold">Incognitto Ink</h1>
-        <div id="notebook-input" class="flex flex-row items-center space-x-2 mt-4">
-          <input type="text" class="input input-bordered grow"/>
-          <button class="btn btn-neutral w-1/4">Submit</button>
+        <div class="flex flex-row items-center space-x-2 mt-4">
+          <input type="text" class="input input-bordered grow" id="notebook-input"/>
+          <button class="btn btn-neutral w-1/4" id="notebook-submit">Submit</button>
         </div>
       </div>
     </div>
-    <script type="module" src="index.js"></script>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
