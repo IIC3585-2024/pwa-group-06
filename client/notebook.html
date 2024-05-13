@@ -8,33 +8,28 @@
     <meta name="theme-color" content="#f1f5f9">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
   </head>
   <body>
     <header>
       <div class="navbar bg-neutral text-neutral-content justify-between">
-        <label class="label cursor-pointer justify-between gap-2">
-          <span class="label-text text-slate-100">Online</span> 
-          <input type="checkbox" class="toggle" checked />
-        </label>
         <button class="btn btn-ghost text-xl">Incognitto Ink</button>
       </div>
     </header>
 
     <div class="bg-gray-100 min-h-screen flex flex-col my-auto px-4 space-y-6 py-4">
-      <h1 class="text-3xl text-left font-bold my-4">Name Notebook</h1>
+      <h1 id="name-tag" class="text-3xl text-left font-bold my-4">Name Notebook</h1>
 
       <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 justify-center items-center">
-        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Home</button>
-        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Delete All</button>
-        <button class="btn btn-neutral rounded-xl w-full md:w-1/6" onclick="options.showModal()">Sort</button>
-        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">JSON</button>
-        <button class="btn btn-accent rounded-xl w-full md:w-1/6">Refresh</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6" onclick="window.location.href = 'index.html';">Home</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6" id="delete-all">Delete All</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6" onclick="options.showModal()" id="sort-button">Sort</button>
+        <button class="btn btn-accent rounded-xl w-full md:w-1/6" id="refresh-button">Refresh</button>
       </div>
 
-      <div id="note-input" class="flex flex-row items-center space-x-2 mt-4">
-        <input type="text" class="input input-bordered grow"/>
-        <button class="btn btn-neutral w-1/4">Submit</button>
+      <div class="flex flex-row items-center space-x-2 mt-4">
+        <input id="note-input"  type="text" class="input input-bordered grow"/>
+        <button id="note-submit" class="btn btn-neutral w-1/4">Submit</button>
       </div>
 
       <template id="note-template">
@@ -45,22 +40,22 @@
               <span class="note-text">Note 1</span>
             </div>
             <div>
-              <button class="btn btn-circle">
+              <button class="btn btn-circle" id="note-edit-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 6.343L21 9.686l-11 11H6.343V17.343l11-11z" />
                 </svg>
               </button>
-              <button class="btn btn-circle">
+              <button class="btn btn-circle" id="move-up-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
                 </svg>
               </button>
-              <button class="btn btn-circle">
+              <button class="btn btn-circle" id="move-down-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 9l7 7 7-7" />
                 </svg>
               </button>
-              <button class="btn btn-circle">
+              <button class="btn btn-circle" id="delete-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
@@ -76,30 +71,29 @@
     <dialog id="options" class="modal">
       <div class="modal-box">
         <form method="dialog">
-          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          <button id="modal-close-button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg pb-2">Select any filter</h3>
         <div class="flex flex-row py-2 space-x-2">
-          <button class="btn btn-svg">
+          <button class="btn btn-svg" id="alphabetical">
             <img class="w-auto h-4" src="assets\alphabetical-order-from-a-to-z.svg" alt="">
             <span class="hidden md:block">A to Z</span>
           </button>
-          <button class="btn btn-svg">
+          <button class="btn btn-svg" id="reverse-alphabetical">
             <img class="w-auto h-4" src="assets\sort-by-reverse-alphabet-order.svg" alt="">
             <span class="hidden md:block">Z to A</span>
           </button>
-          <button class="btn btn-svg">
+          <button class="btn btn-svg" id="order-checked">
             <img class="w-auto h-4" src="assets\checked-checkbox.svg" alt="">
             <span class="hidden md:block">Checked</span>
           </button>
-          <button class="btn btn-svg">
+          <button class="btn btn-svg" id="order-unchecked">
             <img class="w-auto h-4" src="assets\checkbox-blank.svg" alt="">
             <span class="hidden md:block">Unchecked</span>
           </button>
         </div>
       </div>
     </dialog>
-
-    <script src="index.js"></script>
+    <script src="notebook.js" type="module"></script>
   </body>
 </html>
