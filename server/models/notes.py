@@ -6,12 +6,12 @@ from .database import Base
 class Notes(Base):
     __tablename__ = "notes"
 
-    id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
+    slug = Column(String, index=True, unique=True, primary_key=True)
     order = Column(Integer, index=True)
     is_checked = Column(Boolean, index=True)
     kind = Column(Integer, index=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow)
 
-    notepad_id = Column(Integer, ForeignKey("notepads.id"), index=True)
+    notepad_name = Column(String, ForeignKey("notepads.name"), index=True)

@@ -3,17 +3,18 @@ from typing import List, Optional
 from datetime import datetime
 
 class Note(BaseModel):
-    id: Optional[int]
-    notepad_id: int
     title: str
+    slug: str
     order: int
-    checked: bool
+    notepad_name: str
+    is_checked: bool
     kind: int
     created_at: datetime
     updated_at: datetime
 
 class NoteCreate(BaseModel):
     title: str
+    slug: str
     order: Optional[int] = 0
     kind: Optional[int] = 0
-    checked: Optional[bool] = False
+    is_checked: Optional[bool] = False

@@ -6,9 +6,8 @@ from .database import Base
 class Notepads(Base):
     __tablename__ = "notepads"
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True, unique=True)
-    description = Column(String, index=True)
+    name = Column(String, index=True, unique=True, primary_key=True)
+    description = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow)
 
