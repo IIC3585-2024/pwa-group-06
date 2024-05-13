@@ -104,13 +104,10 @@ const notepadsApi = {
         body: JSON.stringify(note),
       });
       const jsonNote = await response.json();
-      await idbApi.set('notes', { id: `${notepadName}-${jsonNote.slug}`, note: jsonNote }, true);
+      await idbApi.set('notes', { id: `${notepadName}-${jsonNote.slug}`, note: jsonNote }, false);
       return jsonResponse;
     } catch (error) {
       await idbApi.set('notes', { id: `${notepadName}-${jsonNote.slug}`, note: jsonNote }, true);
-      navigator.serviceWorker.ready.then(swRegistration => {
-        return swRegistration.sync.register('sync-notes');
-      });
     }
   },
   deleteNote: async (notepadName, note) => {
