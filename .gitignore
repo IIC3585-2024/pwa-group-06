@@ -3,3 +3,5 @@ node_modules/
 .vscode/
 .DS_Store
 notebooks.db
+__pycache__/
+*.pyc
