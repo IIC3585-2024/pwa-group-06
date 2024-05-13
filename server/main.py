@@ -2,6 +2,7 @@ import datetime
 import uvicorn
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from services import send_token_push
 import models
 import schema
 from models.database import SessionLocal, engine
@@ -39,6 +40,13 @@ def create_or_find_notepad(notepad: schema.NotepadCreate, db: Session = Depends(
         db.add(db_notepad)
         db.commit()
         db.refresh(db_notepad)
+
+    try:
+      subscribers = db.query(models.NotepadSubscribers).all()
+      tokens = [subscriber.subscriber_token for subscriber in subscribers]
+      send_token_push("New Notepad", f"New notepad created: {notepad.name}", tokens)
+    except Exception as e:
+        print(e)
     return db_notepad
 
 @app.get("/notepads/{notepad_name}", response_model=schema.Notepad)
@@ -114,6 +122,18 @@ def delete_note_for_notepad(notepad_name: str, note_slug: str, db: Session = Dep
     db.delete(db_note)
     db.commit()
     return {"message": "Note deleted successfully"}
+
+@app.post("/subscribe", response_model=schema.NotepadSubscriber)
+def subscribe_to_notepad(subscriber: schema.NotepadSubscriber, db: Session = Depends(get_db)):
+    db_subscriber = db.query(models.NotepadSubscribers).filter(models.NotepadSubscribers.subscriber_token == subscriber.subscriber_token).first()
+    if db_subscriber is None:
+        db_subscriber = models.NotepadSubscribers(subscriber_token=subscriber.subscriber_token)
+        db.add(db_subscriber)
+        db.commit()
+        db.refresh(db_subscriber)
+        send_token_push("Subscribed to Incognitto Ink!", f"Thx!", [subscriber.subscriber_token])
+
+    return db_subscriber
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
