@@ -3,7 +3,7 @@
   <head>
     <title>My App</title>
     <meta charset="utf-8">
-    <meta name="description" content="My App">
+    <meta name="description" content="Incognitto Ink">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f1f5f9">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
@@ -11,12 +11,22 @@
     <link rel="manifest" href="/manifest.json">
   </head>
   <body>
-    <div class="bg-gray-100 min-h-screen">
+    <header>
+      <div class="navbar bg-neutral text-neutral-content justify-between">
+        <label class="label cursor-pointer justify-between gap-2">
+          <span class="label-text text-slate-100">Online</span> 
+          <input type="checkbox" class="toggle" checked />
+        </label>
+        <button class="btn btn-ghost text-xl">Incognitto Ink</button>
+      </div>
+    </header>
+
+    <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="container p-4 bg-white shadow-lg rounded-lg my-auto flex flex-col justify-between items-center">
-        <h1 class="text-center text-4xl font-bold">IncognitoInk</h1>
+        <h1 class="text-center text-4xl font-bold">Incognitto Ink</h1>
         <div id="notebook-input" class="flex flex-row items-center space-x-2 mt-4">
           <input type="text" class="input input-bordered grow"/>
-          <button class="btn btn-primary w-1/4">Add</button>
+          <button class="btn btn-neutral w-1/4">Submit</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Incognitto Ink">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1f5f9">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="manifest" href="/manifest.json">
+  </head>
+  <body>
+    <header>
+      <div class="navbar bg-neutral text-neutral-content justify-between">
+        <label class="label cursor-pointer justify-between gap-2">
+          <span class="label-text text-slate-100">Online</span> 
+          <input type="checkbox" class="toggle" checked />
+        </label>
+        <button class="btn btn-ghost text-xl">Incognitto Ink</button>
+      </div>
+    </header>
+
+    <div class="bg-gray-100 min-h-screen flex flex-col my-auto px-4 space-y-6 py-4">
+      <h1 class="text-3xl text-left font-bold my-4">Name Notebook</h1>
+
+      <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 justify-center items-center">
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Home</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Delete All</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">Sort</button>
+        <button class="btn btn-neutral rounded-xl w-full md:w-1/6">JSON</button>
+        <button class="btn btn-accent rounded-xl w-full md:w-1/6">Refresh</button>
+      </div>
+
+      <div id="note-input" class="flex flex-row items-center space-x-2 mt-4">
+        <input type="text" class="input input-bordered grow"/>
+        <button class="btn btn-neutral w-1/4">Submit</button>
+      </div>
+
+      <template id="note-template">
+        <div class="bg-white shadow-lg rounded-lg my-4">
+          <div class="note-item flex flex-row justify-between items-center p-4 border-b border-gray-200">
+            <div class="flex flex-row space-x-2">
+              <input type="checkbox" checked="checked" class="checkbox" />
+              <span class="note-text">Note 1</span>
+            </div>
+            <div>
+              <button class="btn btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 6.343L21 9.686l-11 11H6.343V17.343l11-11z" />
+                </svg>
+              </button>
+              <button class="btn btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                </svg>
+              </button>
+              <button class="btn btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 9l7 7 7-7" />
+                </svg>
+              </button>
+              <button class="btn btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <div id="notes-container">
+        <!-- Notes will be added here -->
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
