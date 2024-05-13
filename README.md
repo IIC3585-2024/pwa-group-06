@@ -3,7 +3,7 @@
 Incognitto Ink is a Progressive Web App (PWA) designed to provide a robust note-taking experience with features like offline access and push notifications, to ensure a smooth and native-like user experience.
 
 ## Web
-Available in:  [https://wasm.cparedesr.com/](https://wasm.cparedesr.com/)
+Available in:  [https://wasm.cparedesr.com/](https://wasm.cparedesr.com/index.html)
 
 ## Features
 - Note taking: Easily add and manage your notes.
